@@ -20,6 +20,7 @@ namespace FoodRestaurnats.Data.Repositories
         {
             order.OrderPlaced = DateTime.Now;
             _appDbContext.Orders.Add(order);
+            _appDbContext.SaveChanges();
             
 
             var shoppingCartItems = _shoppingCart.ShoppingCartItems;
