@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">FoodRestaurant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
+
+                    </li>
+
+                    <li class="nav-item" asp-controller="food" asp-action="Index">
+                    @await Component.InvokeAsync("CategoryMenu")
+                    </li>
+
+                  @*  @await Component.InvokeAsync("CategoryMenu")*@
+
+                    @* <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    food
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Veg">Veg</a></li>
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="NonVeg">NonVeg</a></li>
+
+                    </ul>
+                    </li>*@
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-controller="Contact" asp-action="Index">Contact us</a>
+
+
+
+                    </li>
+
+
+
+
+                    @* <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    category
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Veg">Veg</a></li>
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="NonVeg">NonVeg</a></li>
+
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Cart">Cart</a>
+                    </li>*@
+                    @*</li>="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    category
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">subcategory</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>*@
+
+
+
+                     
+                    @await Component.InvokeAsync("ShoppingCartSummary")
+              @*      @await Html.PartialAsync("LoginPartial")*@
+
+                   
+                </ul>
+                <form class="d-flex" role="search">
+                    @*  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">*@
+                    <button class="btn btn-outline-success" type="submit" asp-controller="Home" asp-action="Login">Login</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+ 
+
+    <div class="container body-content" style="padding:50px;">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p><a target="_blank" href="https://github.com/etrupja">&copy; 2017 - Ervis Trupja</a></p>
+        </footer>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

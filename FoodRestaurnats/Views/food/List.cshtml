@@ -1,0 +1,34 @@
+﻿@using System.Globalization;
+@*@using FoodRestaurnats
+@using FoodRestaurnats.ViewModels;
+
+
+@model foodListViewModel*@
+
+@*
+    <div>
+        <h2>All foods are shown here</h2>
+    </div>
+    <h2>
+        @Model.CurrentCategory
+    </h2>
+@{
+    foreach(var food in Model.foods)
+    {
+        <div>
+        <h4> Food Name: @food.Name
+        </h4>
+        <p>Price: @food.Price.ToString("c")</p>
+        </div>
+    }
+}*@
+
+
+@{
+<div class="row">
+    @foreach (food food in Model.foods)
+    {
+        @Html.Partial("foodsSummary",food)
+    }
+</div>
+}
