@@ -3,6 +3,7 @@ using FoodRestaurnats.Data.interfaces;
 using FoodRestaurnats.Data.mocks;
 using FoodRestaurnats.Data.Models;
 using FoodRestaurnats.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,10 +22,13 @@ builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
-
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+});
 builder.Services.AddDbContext<AppDbContext>(options =>
            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 //builder.Services.Configure<IdentityOptions>(options =>
 //{
 //    options.Password.RequiredLength = 9;
@@ -43,7 +47,7 @@ app.UseDeveloperExceptionPage();
 app.UseStatusCodePages();
 app.UseStaticFiles();
 app.UseSession();
-
+app.UseAuthentication();
 DbInitializer.Seed(app);
 //app.UseHttpsRedirection();
 //app.UseStaticFiles();
