@@ -1,9 +1,11 @@
 ﻿using FoodRestaurnats.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodRestaurnats.Data
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -15,5 +17,7 @@ namespace FoodRestaurnats.Data
 
         public DbSet<Order> Orders{ get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+
+
     }
 }

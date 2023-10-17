@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+@inject SignInManager<IdentityUser> signInManager;
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -88,12 +92,32 @@
                     @await Component.InvokeAsync("ShoppingCartSummary")
               @*      @await Html.PartialAsync("LoginPartial")*@
 
-                   
+
                 </ul>
-                <form class="d-flex" role="search">
-                    @*  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">*@
-                    <button class="btn btn-outline-success" type="submit" asp-controller="Home" asp-action="Login">Login</button>
-                </form>
+            
+                <ul class="navbar-nav ml-auto">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <form method="post" asp-controller="account" asp-action="Logout">
+                                <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">
+                                    Logout @User.Identity.Name
+                                </button>
+                            </form>
+                            @* <a asp-action="register"  asp-controller="account" class="nav-link">Register</a>*@
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a asp-action="register" asp-controller="account" class="nav-link">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="login" asp-controller="account" class="nav-link">Login</a>
+                        </li>
+                    }
+                </ul>
+                
             </div>
         </div>
     </nav>
@@ -103,7 +127,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p><a target="_blank" href="https://github.com/etrupja">&copy; 2017 - Ervis Trupja</a></p>
+            <p><a target="_blank" href="https://github.com/etrupja">&copy; 2023 -Aakanksha Kokane</a></p>
         </footer>
     </div>
     @RenderSection("scripts", required: false)

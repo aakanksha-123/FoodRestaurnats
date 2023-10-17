@@ -62,3 +62,6 @@ a.remove {
     height: 200px;
     width: auto;
 }
+.form-button {
+    margin-right: 10px; /* Add space between buttons by setting the right margin */
+}
