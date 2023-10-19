@@ -3,6 +3,7 @@
     public class Order
     {
         public int OrderId { get; set; }
+        
 
         public List<OrderDetail>? OrderLines { get; set; }
 
@@ -37,5 +38,7 @@
         {
             get; set;
         }
+
+    
     }
 }

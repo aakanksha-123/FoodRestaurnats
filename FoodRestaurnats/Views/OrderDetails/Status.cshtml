@@ -1,0 +1,28 @@
+﻿
+<!-- Replace with your actual namespace -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>OrderDetailId</th>
+            <th>OrderId</th>
+            <th>FoodId</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderDetailId</td>
+                <td>@item.OrderId</td>
+                <td>@item.foodId</td>
+                <td>@item.Amount</td>
+                <td>@item.Price</td>
+                <td>@item.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

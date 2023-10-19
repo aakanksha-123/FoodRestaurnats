@@ -31,8 +31,10 @@ namespace FoodRestaurnats.Data.Repositories
                 {
                     Amount = item.Amount,
                     food = item.food,
+                   foodId = item.foodId,
                     OrderId = order.OrderId,
                     Price = item.food.Price,
+                    Status="Pending"
 
                 };
                 _appDbContext.OrderDetails.Add(orderDetails);
@@ -40,5 +42,11 @@ namespace FoodRestaurnats.Data.Repositories
 
             _appDbContext.SaveChanges();
         }
+
+
+        //public int GetTotalById() {
+        //    return _appDbContext.OrderDetail.Sum(n=>n.)
+
+        //}
     }
 }

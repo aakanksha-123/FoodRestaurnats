@@ -13,6 +13,8 @@ namespace FoodRestaurnats.Data.Models
         public int Amount { get; set; }
         public decimal Price { get; set; }
 
+        public string Status { get; set; } //property added
+
         //[ForeignKey("foodId")]
         public virtual food food { get; set; }
 
