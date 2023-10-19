@@ -3,6 +3,7 @@ using FoodRestaurnats.Data.interfaces;
 using FoodRestaurnats.Data.mocks;
 using FoodRestaurnats.Data.Models;
 using FoodRestaurnats.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
