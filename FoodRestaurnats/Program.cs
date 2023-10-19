@@ -3,8 +3,9 @@ using FoodRestaurnats.Data.interfaces;
 using FoodRestaurnats.Data.mocks;
 using FoodRestaurnats.Data.Models;
 using FoodRestaurnats.Data.Repositories;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,16 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddDbContext<AppDbContext>(options =>
            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().
+    AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+
+//// </-- here you have to replace `IdenityUser` and `IdentityRole` with `ApplicationUser` and `ApplicationRole` respectively
+//builder.Services.AddEntityFrameworkStores<AppDbContext>()
+//.AddDefaultUI()
+//.AddDefaultTokenProviders();
+
+
 //builder.Services.Configure<IdentityOptions>(options =>
 //{
 //    options.Password.RequiredLength = 9;
